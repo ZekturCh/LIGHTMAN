@@ -1,0 +1,23 @@
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="{{ '/' | relative_url }}" class="logo" aria-label="Inicio Lightman Perú">
+      <img src="{{ '/assets/img/logo-lightman.png' | relative_url }}" alt="Lightman Perú">
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="site-nav" id="siteNav">
+      <a href="{{ '/' | relative_url }}" class="{% if page.url == '/' %}active{% endif %}">Inicio</a>
+      <a href="{{ '/servicios.html' | relative_url }}" class="{% if page.url == '/servicios.html' %}active{% endif %}">Servicios</a>
+      <a href="{{ '/formatos.html' | relative_url }}" class="{% if page.url == '/formatos.html' %}active{% endif %}">Formatos</a>
+      <a href="{{ '/estructuras.html' | relative_url }}" class="{% if page.url == '/estructuras.html' %}active{% endif %}">Estructuras</a>
+      <a href="{{ '/proyectos.html' | relative_url }}" class="{% if page.url == '/proyectos.html' %}active{% endif %}">Proyectos</a>
+      <a href="{{ '/contacto.html' | relative_url }}" class="{% if page.url == '/contacto.html' %}active{% endif %}">Contacto</a>
+      <a href="https://wa.me/51964111591" class="btn btn-nav" target="_blank" rel="noopener noreferrer">Cotizar</a>
+    </nav>
+  </div>
+</header>

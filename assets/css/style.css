@@ -24,8 +24,8 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at top left, rgba(124,92,255,.12), transparent 28%),
-    radial-gradient(circle at top right, rgba(23,196,255,.08), transparent 24%),
+    radial-gradient(circle at top left, rgba(170,0,0,.14), transparent 28%),
+    radial-gradient(circle at top right, rgba(110,0,0,.10), transparent 24%),
     var(--bg);
   color: var(--text);
   font-family: Inter, Arial, sans-serif;
@@ -316,8 +316,8 @@ h3 {
   border-radius: 50%;
   align-items: center;
   justify-content: center;
-  background: rgba(124,92,255,.16);
-  color: var(--accent-2);
+  background: rgba(170,0,0,.18);
+  color: rgb(255, 215, 215);
   font-weight: 800;
   margin-bottom: 18px;
 }
@@ -362,7 +362,7 @@ h3 {
   padding: 28px;
   border-radius: 28px;
   border: 1px solid var(--line);
-  background: linear-gradient(135deg, rgba(124,92,255,.12), rgba(23,196,255,.08));
+  background: linear-gradient(135deg, rgba(170,0,0,.16), rgba(90,0,0,.10));
 }
 
 .contact-grid {

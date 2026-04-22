@@ -183,47 +183,67 @@ body_class: "page-home"
   }
 
   /* FAQ accordion */
-  .faq-item {
-    border-bottom: 1px solid var(--line);
-  }
-  .faq-q {
-    width: 100%;
-    text-align: left;
-    background: transparent;
-    border: none;
-    color: var(--text);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: .95rem;
-    padding: 20px 0;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-  }
-  .faq-q::after {
-    content: '+';
-    font-size: 1.4rem;
-    color: var(--accent);
-    line-height: 1;
-    flex-shrink: 0;
-    transition: transform .3s;
-  }
-  .faq-item.open .faq-q::after { transform: rotate(45deg); }
-  .faq-a {
-    font-size: .92rem;
-    color: var(--muted);
-    line-height: 1.7;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height .4s ease, padding .3s;
-    padding-bottom: 0;
-  }
-  .faq-item.open .faq-a {
-    max-height: 300px;
-    padding-bottom: 18px;
-  }
+  /* FAQ block */
+.faq-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.faq-title {
+  max-width: 10ch;
+  margin-bottom: 18px;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.faq-q {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 18px 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.faq-q::after {
+  content: '+';
+  font-size: 1.15rem;
+  color: var(--accent);
+  line-height: 1;
+  flex-shrink: 0;
+  transition: transform .28s ease;
+}
+
+.faq-item.open .faq-q::after {
+  transform: rotate(45deg);
+}
+
+.faq-a {
+  font-size: .95rem;
+  color: var(--muted);
+  line-height: 1.65;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .35s ease, padding .25s ease, opacity .25s ease;
+  padding: 0 28px 0 0;
+  opacity: 0;
+}
+
+.faq-item.open .faq-a {
+  max-height: 220px;
+  padding: 0 28px 16px 0;
+  opacity: 1;
+}
 
   /* Split image frame */
   .img-wrap {
@@ -624,65 +644,50 @@ body_class: "page-home"
      FAQ
 ══════════════════════════════════════ -->
 <section class="section">
-  <div class="container">
+  <div class="container faq-wrap">
     <p class="section-kicker">Preguntas frecuentes</p>
-    <h2>Resolvemos<br><span style="color:var(--accent)">tus dudas</span></h2>
+    <h2 class="faq-title">Resolvemos <span>tus dudas</span></h2>
 
-    <div style="max-width:700px;margin-top:32px">
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">¿Venden o alquilan equipos?</button>
-        <div class="faq-a">
-          No vendemos ni alquilamos equipos por separado. Ofrecemos el servicio completo:
-          diseño, personalización, instalación y operación en vivo. El equipo siempre
-          va acompañado de nuestro equipo técnico.
-        </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Venden o alquilan equipos?</button>
+      <div class="faq-a">
+        No vendemos ni alquilamos equipos por separado. Diseñamos y ejecutamos soluciones LED completas.
       </div>
+    </div>
 
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">¿El servicio incluye operador técnico?</button>
-        <div class="faq-a">
-          Sí, siempre. Nuestro equipo técnico está presente en cada evento para operar,
-          ajustar y garantizar el resultado visual programado.
-        </div>
+    <div class="faq-item">
+      <button class="faq-q">¿El servicio incluye operador técnico?</button>
+      <div class="faq-a">
+        Sí. Nuestro equipo técnico acompaña la ejecución para asegurar que todo funcione como fue diseñado.
       </div>
+    </div>
 
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">¿Trabajan fuera de Lima?</button>
-        <div class="faq-a">
-          Sí. Tenemos cobertura nacional e internacional. Hemos operado eventos en
-          distintas ciudades del Perú y también en el exterior. Coordinamos todo
-          el traslado y logística.
-        </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Trabajan fuera de Lima?</button>
+      <div class="faq-a">
+        Sí, podemos operar proyectos dentro y fuera de Lima según el tipo de evento y logística.
       </div>
+    </div>
 
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">¿Pueden personalizar con el branding de nuestra marca?</button>
-        <div class="faq-a">
-          Absolutamente. La personalización es parte central de la propuesta.
-          Adaptamos colores, secuencias, logos y contenidos visuales a la
-          identidad de cada marca o evento.
-        </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Pueden personalizar con el branding de nuestra marca?</button>
+      <div class="faq-a">
+        Sí. Adaptamos colores, lenguaje visual y presencia de marca según la activación o show.
       </div>
+    </div>
 
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">¿Hacen propuestas a medida?</button>
-        <div class="faq-a">
-          Sí. Contamos con shows ya desarrollados y probados, pero también diseñamos
-          propuestas completamente personalizadas según el concepto, el escenario
-          y el objetivo de cada cliente.
-        </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Hacen propuestas a medida?</button>
+      <div class="faq-a">
+        Sí. Podemos proponer una solución específica según objetivo, presupuesto y tipo de evento.
       </div>
+    </div>
 
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">¿Cuánto tiempo antes hay que coordinar?</button>
-        <div class="faq-a">
-          Para shows syncro o estructuras complejas recomendamos al menos 2 a 4 semanas
-          de anticipación. Para activaciones o formatos más sencillos podemos ser más
-          ágiles. Lo mejor es consultarnos cuanto antes.
-        </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Cuánto tiempo antes hay que coordinar?</button>
+      <div class="faq-a">
+        Lo ideal es coordinar con anticipación para asegurar disponibilidad, diseño y personalización.
       </div>
-
     </div>
   </div>
 </section>

@@ -201,7 +201,6 @@ h3 {
 .hero-grid,
 .split,
 .contact-grid,
-.footer-grid,
 .two-col-service {
   display: grid;
   grid-template-columns: 1.1fr .9fr;

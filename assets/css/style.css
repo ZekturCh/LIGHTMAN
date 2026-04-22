@@ -448,7 +448,7 @@ textarea {
 
 .site-footer {
   position: relative;
-  padding-top: 20px;
+  padding-top: 20px; /*ok*/
 }
 
 .site-footer::before {

@@ -36,7 +36,7 @@ body_class: "page-home"
   /* Hero wrapper */
   .hero-wrap {
     position: relative;
-    min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     align-items: flex-end;
     overflow: hidden;
@@ -45,6 +45,7 @@ body_class: "page-home"
     position: relative;
     z-index: 2;
     padding-bottom: 88px;
+    padding-top: 100px; /* espacio bajo la nav sticky */
   }
 
   /* Slider dots */
@@ -68,14 +69,15 @@ body_class: "page-home"
     width: 48px;
   }
 
-  /* Service card — toda la tarjeta es clickeable */
+  /* ── Anchor reset para tarjetas ── */
   .service-card-link {
     display: block;
     text-decoration: none;
-    color: inherit;
+    color: var(--text);
     cursor: pointer;
     transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
     position: relative;
+    /* hereda el background/border/padding de .service-card en style.css */
   }
   .service-card-link::before {
     content: '';
@@ -91,22 +93,19 @@ body_class: "page-home"
     border-color: rgba(170,0,0,.35);
     box-shadow: 0 24px 48px rgba(0,0,0,.45);
   }
-  .service-card-link:hover::before {
-    height: 100%;
-  }
+  .service-card-link:hover::before { height: 100%; }
   .service-card-link p {
     color: var(--muted);
     margin: 10px 0 0;
   }
+  .service-card-link h3 { margin-bottom: 0; }
   .service-card-link .text-link {
     margin-top: 16px;
     display: inline-flex;
-    transition: gap .2s;
     gap: 4px;
+    transition: gap .2s;
   }
-  .service-card-link:hover .text-link {
-    gap: 8px;
-  }
+  .service-card-link:hover .text-link { gap: 8px; }
     display: block;
     width: 48px;
     height: 48px;
@@ -301,10 +300,21 @@ body_class: "page-home"
 
   @media (max-width: 860px) {
     .portfolio-preview { grid-template-columns: 1fr 1fr; }
+    /* Stats — 2 columnas en tablet */
+    .hero-stats { grid-template-columns: repeat(2, 1fr) !important; }
   }
   @media (max-width: 600px) {
     .portfolio-preview { grid-template-columns: 1fr; }
-    .hero-wrap .container { padding-bottom: 64px; }
+    .hero-wrap .container { padding-bottom: 52px; padding-top: 88px; }
+    /* Stats — 2 columnas también en móvil para que quepan */
+    .hero-stats { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+    .hero-stats .stat strong { font-size: 1.5rem !important; }
+    /* Cards — 1 columna ya gestionada por style.css */
+    /* Pasos — 1 columna */
+    .steps-grid { grid-template-columns: 1fr !important; }
+    .steps-grid::before { display: none; }
+    /* Img frame — ocultar en mobile para evitar overflow */
+    .img-frame { display: none; }
   }
 </style>
 
@@ -352,7 +362,7 @@ body_class: "page-home"
         <span>Años de experiencia</span>
       </div>
       <div class="stat">
-        <strong style="font-size:1.9rem;color:var(--accent)">+1 000</strong>
+        <strong style="font-size:1.9rem;color:var(--accent)">+1000</strong>
         <span>Eventos ejecutados</span>
       </div>
       <div class="stat">

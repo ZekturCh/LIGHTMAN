@@ -1,36 +1,46 @@
 <footer class="site-footer">
   <div class="container footer-grid">
+
     <div>
-      <img src="{{ '/assets/img/logo-lightman.png' | relative_url }}" alt="Lightman Perú" class="footer-logo">
+      <img src="{{ '/assets/img/logo-lightman.png' | relative_url }}" class="footer-logo">
       <p>
-        Soluciones LED premium para conciertos, activaciones, branding visual
-        y experiencias de alto impacto.
+        Experiencias LED premium para conciertos, activaciones
+        y shows visuales de alto impacto.
       </p>
     </div>
 
     <div>
-      <h3>Navegación</h3>
+      <h3>Explorar</h3>
       <ul>
         <li><a href="{{ '/' | relative_url }}">Inicio</a></li>
         <li><a href="{{ '/servicios.html' | relative_url }}">Servicios</a></li>
-        <li><a href="{{ '/formatos.html' | relative_url }}">Formatos</a></li>
         <li><a href="{{ '/estructuras.html' | relative_url }}">Estructuras</a></li>
-        <li><a href="{{ '/proyectos.html' | relative_url }}">Proyectos</a></li>
-        <li><a href="{{ '/contacto.html' | relative_url }}">Contacto</a></li>
+        <li><a href="{{ '/servicios.html#shows-syncro' | relative_url }}">Syncro</a></li>
+        <li><a href="{{ '/servicios.html#activaciones' | relative_url }}">Activaciones</a></li>
+        <li><a href="{{ '/formatos.html' | relative_url }}">Trajes</a></li>
       </ul>
     </div>
 
     <div>
       <h3>Contacto</h3>
       <ul>
-        <li><a href="https://wa.me/51964111591" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-        <li><a href="mailto:hola@lightmanperu.com">hola@lightmanperu.com</a></li>
+        <li>
+          <a href="https://wa.me/51964111591" target="_blank">
+            WhatsApp
+          </a>
+        </li>
+        <li>
+          <a href="mailto:hola@lightmanperu.com">
+            hola@lightmanperu.com
+          </a>
+        </li>
         <li>Lima, Perú</li>
       </ul>
     </div>
+
   </div>
 
   <div class="container footer-bottom">
-    <p>© {{ "now" | date: "%Y" }} Lightman Perú. Todos los derechos reservados.</p>
+    <p>© {{ "now" | date: "%Y" }} Lightman Perú</p>
   </div>
 </footer>

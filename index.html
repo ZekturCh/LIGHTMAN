@@ -1,0 +1,711 @@
+---
+layout: default
+title: "Lightman Perú — Soluciones LED Premium"
+description: "Diseñamos, programamos y ejecutamos experiencias LED completas para conciertos, activaciones y shows visuales. Más de 1000 eventos. Lima, Perú."
+canonical: "https://lightmanperu.com/"
+body_class: "page-home"
+---
+
+<!-- ─── ESTILOS EXTRA DE ESTA PÁGINA ─── -->
+<style>
+  /* Hero Slider */
+  .hero-slider {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+  }
+  .hero-slide.active { opacity: 1; }
+  .hero-slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+      rgba(7,7,11,.96) 0%,
+      rgba(7,7,11,.45) 55%,
+      rgba(7,7,11,.15) 100%);
+  }
+
+  /* Hero wrapper */
+  .hero-wrap {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+  .hero-wrap .container {
+    position: relative;
+    z-index: 2;
+    padding-bottom: 88px;
+  }
+
+  /* Slider dots */
+  .slider-dots {
+    display: flex;
+    gap: 8px;
+    margin-top: 32px;
+  }
+  .slider-dot {
+    height: 3px;
+    width: 28px;
+    background: rgba(255,255,255,.18);
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    padding: 0;
+    transition: background .3s, width .3s;
+  }
+  .slider-dot.active {
+    background: var(--accent);
+    width: 48px;
+  }
+
+  /* Service cards SVG icon */
+  .card-icon {
+    display: block;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 18px;
+  }
+
+  /* Steps connector line */
+  .steps-grid {
+    position: relative;
+  }
+  .steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 22px; left: 10%; right: 10%;
+    height: 1px;
+    background: var(--line);
+    z-index: 0;
+  }
+  .step-card { position: relative; z-index: 1; }
+
+  /* Portfolio grid */
+  .portfolio-preview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    margin-top: 34px;
+  }
+  .pf-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    background: var(--surface);
+  }
+  .pf-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .55s ease, filter .35s;
+    filter: brightness(.75);
+  }
+  .pf-item:hover img {
+    transform: scale(1.06);
+    filter: brightness(1);
+  }
+  .pf-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.82) 0%, transparent 55%);
+    opacity: 0;
+    transition: opacity .3s;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.2rem;
+  }
+  .pf-item:hover .pf-overlay { opacity: 1; }
+  .pf-overlay h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: .82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: #fff;
+    margin: 0 0 2px;
+  }
+  .pf-overlay span {
+    font-size: .74rem;
+    color: var(--accent);
+    display: block;
+  }
+
+  /* FAQ accordion */
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+  }
+  .faq-q {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: .95rem;
+    padding: 20px 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .faq-q::after {
+    content: '+';
+    font-size: 1.4rem;
+    color: var(--accent);
+    line-height: 1;
+    flex-shrink: 0;
+    transition: transform .3s;
+  }
+  .faq-item.open .faq-q::after { transform: rotate(45deg); }
+  .faq-a {
+    font-size: .92rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s ease, padding .3s;
+    padding-bottom: 0;
+  }
+  .faq-item.open .faq-a {
+    max-height: 300px;
+    padding-bottom: 18px;
+  }
+
+  /* Split image frame */
+  .img-wrap {
+    position: relative;
+  }
+  .img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    min-height: 420px;
+  }
+  .img-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(170,0,0,.1) 0%, transparent 60%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .img-frame {
+    position: absolute;
+    top: -10px; left: -10px;
+    right: 10px; bottom: 10px;
+    border: 1px solid rgba(170,0,0,.25);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* CTA band */
+  .cta-band {
+    text-align: center;
+    padding: 88px 0;
+    background: linear-gradient(135deg, rgba(170,0,0,.1) 0%, rgba(90,0,0,.06) 100%);
+    border-top: 1px solid rgba(170,0,0,.15);
+    border-bottom: 1px solid rgba(170,0,0,.15);
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-band::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 560px; height: 280px;
+    background: radial-gradient(ellipse, rgba(170,0,0,.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-band h2 { margin: 0 auto 12px; }
+  .cta-band p { color: var(--muted); margin: 0 auto 28px; }
+
+  /* Clients band */
+  .brands-row span {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: .9rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  /* WhatsApp float */
+  .wa-float {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    z-index: 999;
+    width: 56px; height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,.35);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .wa-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 28px rgba(37,211,102,.5);
+  }
+  .wa-float svg { width: 26px; height: 26px; fill: #fff; }
+
+  @media (max-width: 860px) {
+    .portfolio-preview { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .portfolio-preview { grid-template-columns: 1fr; }
+    .hero-wrap .container { padding-bottom: 64px; }
+  }
+</style>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section class="hero-wrap">
+
+  <div class="hero-slider" id="heroSlider">
+    <div class="hero-slide active"
+         style="background-image:url('https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1600&q=85')"></div>
+    <div class="hero-slide"
+         style="background-image:url('https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=1600&q=85')"></div>
+    <div class="hero-slide"
+         style="background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1600&q=85')"></div>
+    <div class="hero-slide"
+         style="background-image:url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1600&q=85')"></div>
+  </div>
+
+  <div class="container">
+    <p class="eyebrow">Soluciones LED Premium — Perú &amp; Internacional</p>
+    <h1>Experiencias<br><span>LED</span> que<br>impactan</h1>
+    <p class="lead" style="margin-top:16px">
+      No vendemos trajes ni equipos. Diseñamos, programamos y ejecutamos
+      experiencias LED completas para conciertos, activaciones y shows visuales.
+    </p>
+    <div class="hero-actions">
+      <a href="/servicios.html" class="btn btn-primary">Ver servicios</a>
+      <a href="/proyectos.html" class="btn btn-secondary">Ver portafolio</a>
+    </div>
+    <!-- Dots -->
+    <div class="slider-dots" id="sliderDots"></div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════
+     ESTADÍSTICAS
+══════════════════════════════════════ -->
+<section class="section-dark" style="padding:52px 0">
+  <div class="container">
+    <div class="hero-stats" style="grid-template-columns:repeat(4,1fr);gap:16px">
+      <div class="stat">
+        <strong style="font-size:1.9rem;color:var(--accent)">+10</strong>
+        <span>Años de experiencia</span>
+      </div>
+      <div class="stat">
+        <strong style="font-size:1.9rem;color:var(--accent)">+1 000</strong>
+        <span>Eventos ejecutados</span>
+      </div>
+      <div class="stat">
+        <strong style="font-size:1.9rem;color:var(--accent)">100%</strong>
+        <span>Manufactura propia en Perú</span>
+      </div>
+      <div class="stat">
+        <strong style="font-size:1.9rem;color:var(--accent)">Intl.</strong>
+        <span>Cobertura nacional e internacional</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     LO QUE HACEMOS
+══════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <p class="section-kicker">Lo que hacemos</p>
+    <h2>Un sistema de soluciones<br>LED para cada contexto</h2>
+    <p class="section-intro">
+      Tenemos una tecnología, pero la aplicamos de múltiples formas.
+      Estos son los caminos principales de la propuesta Lightman.
+    </p>
+
+    <div class="cards-grid">
+
+      <!-- Estructuras -->
+      <div class="service-card">
+        <svg class="card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="30" width="38" height="3" stroke="rgb(170,0,0)" stroke-width="1.6"/>
+          <rect x="11" y="15" width="26" height="15" stroke="rgb(170,0,0)" stroke-width="1.6"/>
+          <line x1="24" y1="5"  x2="24" y2="15" stroke="rgb(170,0,0)" stroke-width="1.6"/>
+          <line x1="15" y1="5"  x2="33" y2="15" stroke="rgb(170,0,0)" stroke-width="1.6"/>
+          <line x1="33" y1="5"  x2="15" y2="15" stroke="rgb(170,0,0)" stroke-width="1.6" stroke-dasharray="3 3"/>
+          <circle cx="24" cy="5" r="2.2" fill="rgb(170,0,0)"/>
+          <rect x="17" y="21" width="6" height="9" stroke="rgb(170,0,0)" stroke-width="1.3"/>
+          <rect x="25" y="21" width="6" height="9" stroke="rgb(170,0,0)" stroke-width="1.3"/>
+          <circle cx="11" cy="31" r="1.8" fill="rgb(170,0,0)" opacity=".6"/>
+          <circle cx="37" cy="31" r="1.8" fill="rgb(170,0,0)" opacity=".6"/>
+        </svg>
+        <h3>Estructuras y<br>Ambientación LED</h3>
+        <p style="color:var(--muted);margin:10px 0 0">
+          Intervención visual de escenarios y montajes con sistemas LED de alta precisión.
+          Tubos, arcos, recorridos y más.
+        </p>
+        <a href="/estructuras.html" class="text-link">Ver línea →</a>
+      </div>
+
+      <!-- Shows -->
+      <div class="service-card">
+        <svg class="card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="11" stroke="rgb(170,0,0)" stroke-width="1.6"/>
+          <circle cx="24" cy="24" r="3.5" fill="rgb(170,0,0)"/>
+          <line x1="24" y1="4"  x2="24" y2="11" stroke="rgb(170,0,0)" stroke-width="1.6"/>
+          <line x1="24" y1="37" x2="24" y2="44" stroke="rgb(170,0,0)" stroke-width="1.6"/>
+          <line x1="4"  y1="24" x2="11" y2="24" stroke="rgb(170,0,0)" stroke-width="1.6"/>
+          <line x1="37" y1="24" x2="44" y2="24" stroke="rgb(170,0,0)" stroke-width="1.6"/>
+          <line x1="9"  y1="9"  x2="14" y2="14" stroke="rgb(170,0,0)" stroke-width="1.6"/>
+          <line x1="34" y1="34" x2="39" y2="39" stroke="rgb(170,0,0)" stroke-width="1.6"/>
+          <line x1="39" y1="9"  x2="34" y2="14" stroke="rgb(170,0,0)" stroke-width="1.6"/>
+          <line x1="14" y1="34" x2="9"  y2="39" stroke="rgb(170,0,0)" stroke-width="1.6"/>
+        </svg>
+        <h3>Shows Syncro<br>LED</h3>
+        <p style="color:var(--muted);margin:10px 0 0">
+          Espectáculos coreografiados donde música, movimiento y programación LED
+          trabajan juntos para crear una experiencia escénica real.
+        </p>
+        <a href="/servicios.html#shows" class="text-link">Ver línea →</a>
+      </div>
+
+      <!-- Activaciones -->
+      <div class="service-card">
+        <svg class="card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 17 L9 31 L20 31 L33 39 L33 9 L20 17 Z"
+                stroke="rgb(170,0,0)" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M37 17 Q44 24 37 31"
+                stroke="rgb(170,0,0)" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+          <path d="M41 12 Q50 24 41 36"
+                stroke="rgb(170,0,0)" stroke-width="1.3" stroke-linecap="round" fill="none" opacity=".5"/>
+          <circle cx="9" cy="24" r="1.8" fill="rgb(170,0,0)" opacity=".7"/>
+        </svg>
+        <h3>Activaciones y<br>Branding LED</h3>
+        <p style="color:var(--muted);margin:10px 0 0">
+          Elementos LED personalizados para marcas. Presencia visual de alto impacto
+          en activaciones, lanzamientos y eventos corporativos.
+        </p>
+        <a href="/servicios.html#activaciones" class="text-link">Ver línea →</a>
+      </div>
+
+      <!-- Formatos -->
+      <div class="service-card">
+        <svg class="card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="24,4 28,18 43,18 31.5,27 35.5,41 24,32 12.5,41 16.5,27 5,18 20,18"
+                   stroke="rgb(170,0,0)" stroke-width="1.6" stroke-linejoin="round"/>
+          <polygon points="24,12 26.5,20 34,20 28,25 30,32 24,27.5 18,32 20,25 14,20 21.5,20"
+                   fill="rgb(170,0,0)" opacity=".14"/>
+          <circle cx="24" cy="24" r="2.2" fill="rgb(170,0,0)"/>
+        </svg>
+        <h3>Formatos<br>Especiales</h3>
+        <p style="color:var(--muted);margin:10px 0 0">
+          Robots LED, trajes, pixel, pois, tambores y más. Recursos visuales únicos
+          para enriquecer cualquier experiencia o show.
+        </p>
+        <a href="/formatos.html" class="text-link">Ver formatos →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     POR QUÉ LIGHTMAN
+══════════════════════════════════════ -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="split">
+
+      <div>
+        <p class="section-kicker">Por qué Lightman</p>
+        <h2>No somos solo<br><span>performers con luces</span></h2>
+        <p class="lead" style="margin-top:16px">
+          El corazón de nuestro negocio es el manejo y control de sistemas LED.
+          Eso es lo que nos diferencia: la capacidad de convertir la luz en un
+          lenguaje visual preciso y poderoso.
+        </p>
+        <ul class="feature-list" style="list-style:none;padding:0;margin-top:24px">
+          <li style="margin-bottom:16px;color:var(--muted)">
+            <strong style="color:var(--text);display:block;margin-bottom:4px">— Control LED Integral</strong>
+            Programamos y operamos cada punto de luz del show.
+          </li>
+          <li style="margin-bottom:16px;color:var(--muted)">
+            <strong style="color:var(--text);display:block;margin-bottom:4px">— Manufactura Propia</strong>
+            Fabricamos en Perú. Eso nos da velocidad y personalización total.
+          </li>
+          <li style="margin-bottom:16px;color:var(--muted)">
+            <strong style="color:var(--text);display:block;margin-bottom:4px">— Operación Completa</strong>
+            Nos encargamos de todo: diseño, instalación y operación en vivo.
+          </li>
+          <li style="color:var(--muted)">
+            <strong style="color:var(--text);display:block;margin-bottom:4px">— Personalización Visual</strong>
+            Adaptamos colores, logos y contenido a cada marca o evento.
+          </li>
+        </ul>
+      </div>
+
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&q=80"
+             alt="Control LED en show en vivo" loading="lazy">
+        <div class="img-frame"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CÓMO TRABAJAMOS
+══════════════════════════════════════ -->
+<section class="section section-soft">
+  <div class="container">
+    <p class="section-kicker">Proceso</p>
+    <h2>Cómo <span style="color:var(--accent)">trabajamos</span></h2>
+    <p class="section-intro">
+      Nos encargamos de todo para que tú te concentres solo en tu evento.
+    </p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <span>01</span>
+        <h3>Entendemos tu evento</h3>
+        <p style="color:var(--muted)">
+          Escuchamos el contexto, escenario, audiencia y el objetivo visual que necesitas lograr.
+        </p>
+      </div>
+      <div class="step-card">
+        <span>02</span>
+        <h3>Proponemos la solución</h3>
+        <p style="color:var(--muted)">
+          Diseñamos una propuesta LED personalizada según tu presupuesto y evento.
+        </p>
+      </div>
+      <div class="step-card">
+        <span>03</span>
+        <h3>Personalizamos la visual</h3>
+        <p style="color:var(--muted)">
+          Programamos colores, timing, efectos y branding según la identidad del cliente.
+        </p>
+      </div>
+      <div class="step-card">
+        <span>04</span>
+        <h3>Operamos el show</h3>
+        <p style="color:var(--muted)">
+          Nuestro equipo técnico está presente el día del evento para ejecutar y asegurar el resultado.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PORTAFOLIO PREVIEW
+══════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <p class="section-kicker">Nuestro trabajo</p>
+    <h2>Algunos <span style="color:var(--accent)">proyectos</span></h2>
+    <p class="section-intro">
+      Una selección del trabajo real. Las palabras convencen, las imágenes cierran.
+    </p>
+
+    <div class="portfolio-preview">
+      <div class="pf-item">
+        <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=600&q=80"
+             alt="Show Syncro — Concierto Nacional" loading="lazy">
+        <div class="pf-overlay">
+          <div><h4>Show Syncro</h4><span>Concierto Nacional</span></div>
+        </div>
+      </div>
+      <div class="pf-item">
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80"
+             alt="Activación Corporativa" loading="lazy">
+        <div class="pf-overlay">
+          <div><h4>Activación Corporativa</h4><span>Lanzamiento de Marca</span></div>
+        </div>
+      </div>
+      <div class="pf-item">
+        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80"
+             alt="Estructura LED — Festival" loading="lazy">
+        <div class="pf-overlay">
+          <div><h4>Estructura LED</h4><span>Festival Internacional</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-actions" style="margin-top:28px">
+      <a href="/proyectos.html" class="btn btn-secondary">Ver portafolio completo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CLIENTES
+══════════════════════════════════════ -->
+<section class="section-dark" style="padding:52px 0">
+  <div class="container">
+    <p style="text-align:center;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;
+              color:var(--muted);margin-bottom:24px">Han confiado en nosotros</p>
+    <div class="brands-row">
+      <span>Coca-Cola</span>
+      <span>Movistar</span>
+      <span>Samsung</span>
+      <span>Claro</span>
+      <span>Backus</span>
+      <span>Plaza Vea</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FAQ
+══════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <p class="section-kicker">Preguntas frecuentes</p>
+    <h2>Resolvemos<br><span style="color:var(--accent)">tus dudas</span></h2>
+
+    <div style="max-width:700px;margin-top:32px">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Venden o alquilan equipos?</button>
+        <div class="faq-a">
+          No vendemos ni alquilamos equipos por separado. Ofrecemos el servicio completo:
+          diseño, personalización, instalación y operación en vivo. El equipo siempre
+          va acompañado de nuestro equipo técnico.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿El servicio incluye operador técnico?</button>
+        <div class="faq-a">
+          Sí, siempre. Nuestro equipo técnico está presente en cada evento para operar,
+          ajustar y garantizar el resultado visual programado.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Trabajan fuera de Lima?</button>
+        <div class="faq-a">
+          Sí. Tenemos cobertura nacional e internacional. Hemos operado eventos en
+          distintas ciudades del Perú y también en el exterior. Coordinamos todo
+          el traslado y logística.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Pueden personalizar con el branding de nuestra marca?</button>
+        <div class="faq-a">
+          Absolutamente. La personalización es parte central de la propuesta.
+          Adaptamos colores, secuencias, logos y contenidos visuales a la
+          identidad de cada marca o evento.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Hacen propuestas a medida?</button>
+        <div class="faq-a">
+          Sí. Contamos con shows ya desarrollados y probados, pero también diseñamos
+          propuestas completamente personalizadas según el concepto, el escenario
+          y el objetivo de cada cliente.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Cuánto tiempo antes hay que coordinar?</button>
+        <div class="faq-a">
+          Para shows syncro o estructuras complejas recomendamos al menos 2 a 4 semanas
+          de anticipación. Para activaciones o formatos más sencillos podemos ser más
+          ágiles. Lo mejor es consultarnos cuanto antes.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CTA FINAL
+══════════════════════════════════════ -->
+<div class="cta-band">
+  <div class="container" style="position:relative;z-index:1">
+    <h2 style="margin:0 auto 12px">¿Tienes un evento en mente?</h2>
+    <p>Escríbenos y te hacemos una propuesta a medida. Sin compromiso.</p>
+    <a href="https://wa.me/51964111591" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+      Escribir por WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- WhatsApp flotante -->
+<a class="wa-float" href="https://wa.me/51964111591"
+   target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94
+    1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059
+    -.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371
+    -.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01
+    -.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198
+    2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719
+    2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87
+    0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45
+    4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45
+    -4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0
+    2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0
+    11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ─── JS DE ESTA PÁGINA ─── -->
+<script>
+  // ── Hero Slider ──
+  (function () {
+    const slides = document.querySelectorAll('#heroSlider .hero-slide');
+    const dotsWrap = document.getElementById('sliderDots');
+    let current = 0;
+
+    slides.forEach((_, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'slider-dot' + (i === 0 ? ' active' : '');
+      btn.setAttribute('aria-label', 'Slide ' + (i + 1));
+      btn.onclick = () => goTo(i);
+      dotsWrap.appendChild(btn);
+    });
+
+    function goTo(idx) {
+      slides[current].classList.remove('active');
+      dotsWrap.children[current].classList.remove('active');
+      current = idx;
+      slides[current].classList.add('active');
+      dotsWrap.children[current].classList.add('active');
+    }
+
+    setInterval(() => goTo((current + 1) % slides.length), 5000);
+  })();
+
+  // ── FAQ Accordion ──
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+</script>

@@ -116,6 +116,7 @@ h3 {
   backdrop-filter: blur(16px);
   background: rgba(7,7,11,.72);
   border-bottom: 1px solid var(--line);
+  text-transform: uppercase;
 }
 
 .header-inner {
@@ -141,12 +142,16 @@ h3 {
 .site-nav a {
   color: var(--muted);
   transition: .25s ease;
-  font-weight: 600;
+  font-weight: 400;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .site-nav a:hover,
 .site-nav a.active {
   color: var(--text);
+  letter-spacing: 1.5px;
 }
 
 .menu-toggle {
@@ -183,11 +188,14 @@ h3 {
   color: #fff;
 }
 
-.btn-secondary,
-.btn-nav {
+.btn-secondary{
   border: 1px solid var(--line);
   background: rgba(255,255,255,0.04);
   color: var(--text);
+}
+.btn-nav {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  letter-spacing: 1px;
 }
 
 .hero-grid,

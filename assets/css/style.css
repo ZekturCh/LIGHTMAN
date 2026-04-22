@@ -28,7 +28,7 @@ body {
     radial-gradient(circle at top right, rgba(110,0,0,.10), transparent 24%),
     var(--bg);
   color: var(--text);
-  font-family: Inter, Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   line-height: 1.6;
 }
 
@@ -76,8 +76,10 @@ main {
   margin: 0 0 14px;
   font-weight: 700;
 }
-
 h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.5px;
   line-height: 1.05;
   margin: 0 0 16px;
 }

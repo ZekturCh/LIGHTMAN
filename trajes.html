@@ -1,0 +1,309 @@
+---
+layout: default
+title: "Trajes LED — Lightman Perú"
+description: "Trajes LED disponibles para shows, activaciones y eventos. Cada traje es un recurso escénico completo con control de luces en tiempo real."
+canonical: "https://lightmanperu.com/trajes.html"
+body_class: "page-trajes"
+---
+
+<style>
+  /* ── Page hero ── */
+  .page-hero-wrap {
+    position: relative;
+    min-height: 52vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+  .page-hero-bg {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  .page-hero-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top,
+      rgba(7,7,11,1) 0%, rgba(7,7,11,.5) 55%, rgba(7,7,11,.15) 100%);
+  }
+  .page-hero-wrap .container {
+    position: relative;
+    z-index: 2;
+    padding-top: 140px;
+    padding-bottom: 72px;
+  }
+
+  /* ── Alternating rows ── */
+  .traje-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    min-height: 480px;
+    border-bottom: 1px solid var(--line);
+  }
+  .traje-row:last-of-type { border-bottom: none; }
+
+  .traje-img {
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+  }
+  .traje-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .6s ease, filter .4s;
+    filter: brightness(.75);
+  }
+  .traje-row:hover .traje-img img {
+    transform: scale(1.04);
+    filter: brightness(.9);
+  }
+  .traje-img::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(170,0,0,.08) 0%, transparent 60%);
+    z-index: 1; pointer-events: none;
+  }
+
+  .traje-body {
+    padding: 52px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--bg-soft);
+  }
+  .traje-row:nth-child(even) .traje-body {
+    background: var(--surface);
+  }
+
+  .traje-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .traje-badge span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(170,0,0,.3);
+    padding: .25rem .7rem;
+    border-radius: 20px;
+  }
+
+  .traje-body h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 14px;
+    line-height: 1.1;
+  }
+  .traje-body h2 span { color: var(--accent); }
+
+  .traje-body p {
+    color: var(--muted);
+    font-size: .95rem;
+    line-height: 1.7;
+    margin: 0 0 20px;
+  }
+
+  .traje-specs {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .traje-specs li {
+    font-size: .86rem;
+    color: var(--muted);
+    padding-left: 16px;
+    position: relative;
+  }
+  .traje-specs li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: .75rem;
+  }
+
+  /* ── CTA ── */
+  .cta-band {
+    text-align: center;
+    padding: 88px 0;
+    background: linear-gradient(135deg, rgba(170,0,0,.1) 0%, rgba(90,0,0,.06) 100%);
+    border-top: 1px solid rgba(170,0,0,.15);
+    position: relative; overflow: hidden;
+  }
+  .cta-band::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 560px; height: 280px;
+    background: radial-gradient(ellipse, rgba(170,0,0,.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-band h2 { margin: 0 auto 12px; max-width: 22ch; }
+  .cta-band p  { color: var(--muted); margin: 0 auto 28px; }
+
+  /* ── WhatsApp ── */
+  .wa-float {
+    position: fixed;
+    bottom: 28px; right: 28px; z-index: 999;
+    width: 56px; height: 56px;
+    background: #25D366; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,.35);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,.5); }
+  .wa-float svg { width: 26px; height: 26px; fill: #fff; }
+
+  /* ── Responsive ── */
+  @media (max-width: 860px) {
+    .traje-row {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    /* En móvil siempre: imagen arriba, texto abajo */
+    .traje-row .traje-img  { order: 1; min-height: 280px; }
+    .traje-row .traje-body { order: 2; padding: 36px 24px; }
+  }
+  @media (max-width: 600px) {
+    .page-hero-wrap .container { padding-top: 110px; padding-bottom: 52px; }
+    .traje-body { padding: 28px 20px; }
+  }
+</style>
+
+<!-- ══ HERO ══════════════════════════════ -->
+<section class="page-hero-wrap">
+  <div class="page-hero-bg"
+       style="background-image:url('https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=1600&q=85')"></div>
+  <div class="container">
+    <p class="eyebrow">Trajes disponibles</p>
+    <h1>Vestuario<br><span>LED</span></h1>
+    <p class="lead" style="margin-top:16px">
+      Cada traje es un recurso escénico completo. No son accesorios con luces:
+      son sistemas LED controlados diseñados para el impacto visual en escena.
+    </p>
+  </div>
+</section>
+
+<!-- ══ TRAJE 1: imagen izq | texto der ═══ -->
+<div class="traje-row">
+  <div class="traje-img">
+    <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=800&q=80"
+         alt="Traje Robot LED" loading="lazy">
+  </div>
+  <div class="traje-body">
+    <div class="traje-badge"><span>Gran formato</span></div>
+    <h2>Traje <span>Robot LED</span></h2>
+    <p>
+      Estructura de gran tamaño con LED de alta densidad en todo el cuerpo.
+      Presencia escénica inmediata. Ideal para aperturas de shows y eventos masivos.
+    </p>
+    <ul class="traje-specs">
+      <li>Control inalámbrico en tiempo real</li>
+      <li>Más de 500 LEDs programables por traje</li>
+      <li>Operador técnico incluido en el servicio</li>
+      <li>Disponible en configuración de 1 a 4 unidades</li>
+    </ul>
+    <a href="https://wa.me/51964111591" class="btn btn-primary"
+       target="_blank" rel="noopener noreferrer"
+       style="align-self:flex-start">Consultar disponibilidad</a>
+  </div>
+</div>
+
+<!-- ══ TRAJE 2: texto izq | imagen der ═══ -->
+<div class="traje-row">
+  <div class="traje-body">
+    <div class="traje-badge"><span>Syncro</span></div>
+    <h2>Traje <span>Pixel Full</span></h2>
+    <p>
+      Traje de bailarín con matriz de píxeles LED en toda la superficie.
+      Permite mostrar contenido, secuencias y efectos de movimiento
+      sincronizados con la música.
+    </p>
+    <ul class="traje-specs">
+      <li>Programación personalizada por evento</li>
+      <li>Sincronizable con música en vivo o pista</li>
+      <li>Disponible para shows desde 2 performers</li>
+      <li>Colores y secuencias adaptables a la marca</li>
+    </ul>
+    <a href="https://wa.me/51964111591" class="btn btn-primary"
+       target="_blank" rel="noopener noreferrer"
+       style="align-self:flex-start">Consultar disponibilidad</a>
+  </div>
+  <div class="traje-img">
+    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&q=80"
+         alt="Traje Pixel LED" loading="lazy">
+  </div>
+</div>
+
+<!-- ══ TRAJE 3: imagen izq | texto der ═══ -->
+<div class="traje-row">
+  <div class="traje-img">
+    <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=800&q=80"
+         alt="Traje Neón LED" loading="lazy">
+  </div>
+  <div class="traje-body">
+    <div class="traje-badge"><span>Versátil</span></div>
+    <h2>Traje <span>Neón Outline</span></h2>
+    <p>
+      Silueta de neón LED sobre traje oscuro. Efecto visual limpio y llamativo
+      que funciona tanto en shows nocturnos como en espacios con control de iluminación.
+    </p>
+    <ul class="traje-specs">
+      <li>Diseño de contorno de alta visibilidad</li>
+      <li>Adaptable a diferentes figuras y tallas</li>
+      <li>Ideal para shows de 3 a 8 performers</li>
+      <li>Bajo mantenimiento, alta durabilidad</li>
+    </ul>
+    <a href="https://wa.me/51964111591" class="btn btn-primary"
+       target="_blank" rel="noopener noreferrer"
+       style="align-self:flex-start">Consultar disponibilidad</a>
+  </div>
+</div>
+
+<!-- ══ TRAJE 4: texto izq | imagen der ═══ -->
+<div class="traje-row">
+  <div class="traje-body">
+    <div class="traje-badge"><span>Activaciones</span></div>
+    <h2>Traje <span>Branding LED</span></h2>
+    <p>
+      Traje con espacio dedicado a mostrar el logo, colores o contenido de una marca.
+      Pensado para activaciones, lanzamientos y presencia de marca en eventos corporativos.
+    </p>
+    <ul class="traje-specs">
+      <li>Personalización de logo y paleta de marca</li>
+      <li>Operación en zonas de alto tráfico</li>
+      <li>Incluye coordinación logística en el evento</li>
+      <li>Disponible para una o varias activaciones</li>
+    </ul>
+    <a href="https://wa.me/51964111591" class="btn btn-primary"
+       target="_blank" rel="noopener noreferrer"
+       style="align-self:flex-start">Consultar disponibilidad</a>
+  </div>
+  <div class="traje-img">
+    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80"
+         alt="Traje Branding LED" loading="lazy">
+  </div>
+</div>
+<!-- Para agregar más trajes: duplica un .traje-row alternando el orden imagen/texto -->
+
+<!-- ══ CTA ════════════════════════════════ -->
+<div class="cta-band">
+  <div class="container" style="position:relative;z-index:1">
+    <h2>¿Cuántos trajes necesitas?</h2>
+    <p>Dinos el tipo de evento y el espacio. Te armamos la propuesta.</p>
+    <a href="https://wa.me/51964111591" class="btn btn-primary"
+       target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a>
+  </div>
+</div>

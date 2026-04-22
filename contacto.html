@@ -2,64 +2,470 @@
 layout: default
 title: Contacto | Cotiza tu Evento LED | Lightman Perú
 description: Contacta con Lightman para cotizar shows LED, estructuras, branding visual y activaciones para eventos en Perú y el extranjero.
-canonical: https://lightmanperu.com/contacto.html
-permalink: /contacto.html
-body_class: contacto-page
+canonical: https://lightmanperu.com/activaciones.html
+permalink: /activaciones.html
+body_class: activaciones-page
 ---
 
-<section class="page-hero">
-  <div class="container">
-    <p class="eyebrow">Contacto</p>
-    <h1>Cuéntanos tu evento</h1>
-    <p class="lead">
-      Escríbenos y te proponemos una solución visual a la medida de tu presupuesto,
-      tu escenario y tu objetivo.
+<style>
+  .page-hero-wrap {
+    position: relative;
+    min-height: 54vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+  .page-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  .page-hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(7,7,11,1) 0%,
+      rgba(7,7,11,.68) 48%,
+      rgba(7,7,11,.25) 100%
+    );
+  }
+  .page-hero-wrap .container {
+    position: relative;
+    z-index: 2;
+    padding-top: 140px;
+    padding-bottom: 72px;
+  }
+
+  .hero-activaciones-copy {
+    max-width: 720px;
+  }
+  .hero-activaciones-copy h1 {
+    max-width: 12ch;
+  }
+  .hero-activaciones-copy h1 span {
+    color: var(--accent);
+  }
+
+  .split-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .split-showcase .showcase-copy p {
+    color: var(--muted);
+    max-width: 58ch;
+  }
+
+  .showcase-media {
+    position: relative;
+    min-height: 320px;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    background: #0b0b10;
+  }
+  .showcase-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(.82);
+  }
+
+  .formats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 2.5rem;
+  }
+
+  .format-activation-card {
+    position: relative;
+    min-height: 320px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: #0b0b10;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .format-activation-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(.58);
+    transition: transform .5s ease, filter .35s ease;
+  }
+
+  .format-activation-card:hover img {
+    transform: scale(1.05);
+    filter: brightness(.76);
+  }
+
+  .format-activation-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    background: linear-gradient(
+      to top,
+      rgba(7,7,11,.95) 0%,
+      rgba(7,7,11,.12) 68%
+    );
+  }
+
+  .format-tag {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 2;
+    font-family: 'Montserrat', sans-serif;
+    font-size: .65rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 7px 10px;
+    background: rgba(170,0,0,.92);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,.12);
+  }
+
+  .format-activation-card h3 {
+    margin: 0 0 8px;
+    font-size: 1.4rem;
+    line-height: 1.05;
+    max-width: 12ch;
+    color: #fff;
+  }
+
+  .format-activation-card p {
+    margin: 0;
+    color: rgba(255,255,255,.66);
+    font-size: .9rem;
+    line-height: 1.55;
+    max-width: 28ch;
+  }
+
+  .uses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 2.5rem;
+  }
+
+  .use-card {
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    padding: 22px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .use-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent);
+    opacity: .75;
+  }
+
+  .use-card h3 {
+    margin: 0 0 10px;
+    font-size: 1rem;
+    color: #fff;
+  }
+
+  .use-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: .92rem;
+    line-height: 1.65;
+  }
+
+  .features-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+    margin-top: 2.5rem;
+  }
+
+  .feature-mini {
+    padding-top: 14px;
+    border-top: 1px solid rgba(170,0,0,.28);
+  }
+
+  .feature-mini h4 {
+    margin: 0 0 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: .86rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: .04em;
+  }
+
+  .feature-mini p {
+    margin: 0;
+    color: var(--muted);
+    font-size: .82rem;
+    line-height: 1.6;
+  }
+
+  .cta-band {
+    text-align: center;
+    padding: 88px 0;
+    background: linear-gradient(135deg, rgba(170,0,0,.1) 0%, rgba(90,0,0,.06) 100%);
+    border-top: 1px solid rgba(170,0,0,.15);
+    border-bottom: 1px solid rgba(170,0,0,.15);
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-band::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 560px;
+    height: 280px;
+    background: radial-gradient(ellipse, rgba(170,0,0,.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-band h2 {
+    margin: 0 auto 12px;
+    max-width: 18ch;
+  }
+  .cta-band p {
+    color: var(--muted);
+    margin: 0 auto 28px;
+    max-width: 60ch;
+  }
+
+  @media (max-width: 1080px) {
+    .formats-grid,
+    .uses-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .features-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 860px) {
+    .split-showcase,
+    .formats-grid,
+    .uses-grid {
+      grid-template-columns: 1fr;
+    }
+    .features-list {
+      grid-template-columns: 1fr;
+    }
+    .page-hero-wrap .container {
+      padding-top: 112px;
+      padding-bottom: 56px;
+    }
+    .showcase-media {
+      min-height: 240px;
+    }
+  }
+</style>
+
+<!-- HERO -->
+<section class="page-hero-wrap">
+  <div class="page-hero-bg"
+       style="background-image:url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1600&q=85')"></div>
+  <div class="container hero-activaciones-copy">
+    <p class="eyebrow">Branding LED para eventos</p>
+    <h1>Haz que tu marca se vea <span>imposible de ignorar</span></h1>
+    <p class="lead" style="margin-top:16px">
+      Soluciones LED para mostrar logos, mensajes y presencia de marca de forma
+      creativa, llamativa y memorable dentro de eventos, activaciones y experiencias en vivo.
     </p>
   </div>
 </section>
 
+<!-- CONTEXTO -->
 <section class="section">
-  <div class="container contact-grid">
-    <div class="contact-card">
-      <h2>Hablemos directo</h2>
-      <p>La forma más rápida es por WhatsApp.</p>
-      <a href="https://wa.me/51964111591" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-        Abrir WhatsApp
-      </a>
-
-      <div class="contact-data">
-        <p><strong>Email:</strong> hola@lightmanperu.com</p>
-        <p><strong>Cobertura:</strong> Lima, Perú e internacional</p>
-      </div>
+  <div class="container split-showcase">
+    <div class="showcase-copy">
+      <p class="section-kicker">Qué es esta línea</p>
+      <h2>Brandeo LED para llamar la atención en el espacio físico</h2>
+      <p>
+        No se trata solo de poner un logo. Se trata de convertir la marca en una
+        presencia visual viva dentro del evento: movimiento, luz, recordación y diferenciación.
+      </p>
+      <p>
+        Ideal para activaciones, lanzamientos, ferias, stands, ingresos, pasacalles,
+        recorridos comerciales o cualquier contexto donde la marca necesite atraer ojos y quedarse en la memoria.
+      </p>
     </div>
 
-    <form class="contact-form" action="https://formspree.io/f/TU_ENDPOINT" method="POST">
-      <div class="form-row">
-        <label for="name">Nombre</label>
-        <input id="name" name="name" type="text" required>
-      </div>
-
-      <div class="form-row">
-        <label for="email">Correo</label>
-        <input id="email" name="email" type="email" required>
-      </div>
-
-      <div class="form-row">
-        <label for="phone">Teléfono</label>
-        <input id="phone" name="phone" type="text">
-      </div>
-
-      <div class="form-row">
-        <label for="event">Tipo de evento</label>
-        <input id="event" name="event" type="text">
-      </div>
-
-      <div class="form-row">
-        <label for="message">Cuéntanos lo que necesitas</label>
-        <textarea id="message" name="message" rows="6" required></textarea>
-      </div>
-
-      <button type="submit" class="btn btn-secondary">Enviar consulta</button>
-    </form>
+    <div class="showcase-media">
+      <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200&q=80"
+           alt="Branding LED en evento">
+    </div>
   </div>
 </section>
+
+<!-- ARTEFACTOS -->
+<section style="padding-top:0;background:var(--surface);border-top:1px solid var(--line)">
+  <div class="container" style="padding-top:72px;padding-bottom:72px">
+    <p class="section-label eyebrow">Artefactos disponibles</p>
+    <h2 class="section-title" style="max-width:16ch">Herramientas LED para <span style="color:var(--accent)">marcas</span></h2>
+
+    <div class="formats-grid">
+
+      <article class="format-activation-card">
+        <span class="format-tag">Top</span>
+        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=900&q=80" alt="Bandera LED">
+        <div class="format-activation-overlay">
+          <h3>Bandera LED</h3>
+          <p>Formato móvil y visible para desfiles, ingresos, activaciones itinerantes y presencia de marca en recorrido.</p>
+        </div>
+      </article>
+
+      <article class="format-activation-card">
+        <span class="format-tag">Premium</span>
+        <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=900&q=80" alt="Tambores LED">
+        <div class="format-activation-overlay">
+          <h3>Tambores LED</h3>
+          <p>Ritmo, energía y branding en una sola pieza para aperturas, lanzamientos y eventos corporativos.</p>
+        </div>
+      </article>
+
+      <article class="format-activation-card">
+        <span class="format-tag">Premium</span>
+        <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=900&q=80" alt="Holograma">
+        <div class="format-activation-overlay">
+          <h3>Holograma</h3>
+          <p>Presentación impactante de producto, mensaje o logo con un lenguaje más futurista y diferenciador.</p>
+        </div>
+      </article>
+
+      <article class="format-activation-card">
+        <span class="format-tag">Top</span>
+        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=900&q=80" alt="Pois LED">
+        <div class="format-activation-overlay">
+          <h3>Pois LED</h3>
+          <p>Trazos de luz en movimiento para reforzar storytelling, color de campaña y momentos de atención visual.</p>
+        </div>
+      </article>
+
+      <article class="format-activation-card">
+        <span class="format-tag">Premium</span>
+        <img src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?w=900&q=80" alt="Robot Pixel">
+        <div class="format-activation-overlay">
+          <h3>Robot Pixel</h3>
+          <p>Presencia tecnológica y memorable para fotos, interacción, recorrido y posicionamiento visual de marca.</p>
+        </div>
+      </article>
+
+      <article class="format-activation-card">
+        <span class="format-tag">Top</span>
+        <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=900&q=80" alt="Robot en zancos">
+        <div class="format-activation-overlay">
+          <h3>Robot en zancos</h3>
+          <p>Máximo alcance visual y sensación de espectáculo para entradas, pasillos, plazas y activaciones masivas.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- IDEAS / USOS -->
+<section class="section">
+  <div class="container">
+    <p class="section-label eyebrow">Dónde funciona esta línea</p>
+    <h2 class="section-title" style="max-width:18ch">Ideas de uso y contextos donde mejor rinde</h2>
+
+    <div class="uses-grid">
+      <article class="use-card">
+        <h3>Ingresos y recibimientos</h3>
+        <p>Perfecto para convertir la llegada del público en un primer impacto visual ligado a la marca o al concepto del evento.</p>
+      </article>
+
+      <article class="use-card">
+        <h3>Ferias y stands</h3>
+        <p>Útil para destacar entre competidores, atraer tráfico al punto y volver más visible el espacio comercial.</p>
+      </article>
+
+      <article class="use-card">
+        <h3>Lanzamientos de producto</h3>
+        <p>Ayuda a presentar el producto con una puesta más tecnológica, memorable y alineada a innovación.</p>
+      </article>
+
+      <article class="use-card">
+        <h3>Recorridos de marca</h3>
+        <p>Ideal para dinámicas itinerantes donde la marca necesita moverse por el espacio sin perder presencia visual.</p>
+      </article>
+
+      <article class="use-card">
+        <h3>Eventos corporativos</h3>
+        <p>Funciona muy bien para dar elegancia, energía o protagonismo a la identidad visual del cliente.</p>
+      </article>
+
+      <article class="use-card">
+        <h3>Activaciones BTL</h3>
+        <p>Especialmente potente cuando el objetivo principal es llamar atención, generar fotos y aumentar recordación.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIALES -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <p class="section-label eyebrow">Por qué elegirlo</p>
+    <h2 class="section-title" style="max-width:18ch">Qué aporta esta línea a una activación</h2>
+
+    <div class="features-list">
+      <div class="feature-mini">
+        <h4>Más atención</h4>
+        <p>La luz y el movimiento ayudan a destacar la marca frente al ruido del entorno.</p>
+      </div>
+
+      <div class="feature-mini">
+        <h4>Más fotos</h4>
+        <p>Los artefactos generan momentos visuales que el público quiere grabar o compartir.</p>
+      </div>
+
+      <div class="feature-mini">
+        <h4>Más recordación</h4>
+        <p>La marca deja de ser solo gráfica y se convierte en experiencia.</p>
+      </div>
+
+      <div class="feature-mini">
+        <h4>Más personalidad</h4>
+        <p>Cada formato puede adaptarse a colores, tono y estilo de la campaña.</p>
+      </div>
+
+      <div class="feature-mini">
+        <h4>Más impacto real</h4>
+        <p>No es decoración: es presencia visual pensada para atraer y quedarse en la memoria.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <div class="container" style="position:relative;z-index:1">
+    <h2>¿Tienes una activación próxima?</h2>
+    <p>Cuéntanos el evento y el objetivo. Te proponemos el formato LED ideal para tu marca.</p>
+    <a href="https://wa.me/51964111591"
+       class="btn btn-primary"
+       target="_blank"
+       rel="noopener noreferrer">Escribir por WhatsApp</a>
+  </div>
+</div>

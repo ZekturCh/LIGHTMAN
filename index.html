@@ -68,8 +68,45 @@ body_class: "page-home"
     width: 48px;
   }
 
-  /* Service cards SVG icon */
-  .card-icon {
+  /* Service card — toda la tarjeta es clickeable */
+  .service-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    position: relative;
+  }
+  .service-card-link::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 0;
+    background: var(--accent);
+    transition: height .35s ease;
+    border-radius: 2px 0 0 2px;
+  }
+  .service-card-link:hover {
+    transform: translateY(-4px);
+    border-color: rgba(170,0,0,.35);
+    box-shadow: 0 24px 48px rgba(0,0,0,.45);
+  }
+  .service-card-link:hover::before {
+    height: 100%;
+  }
+  .service-card-link p {
+    color: var(--muted);
+    margin: 10px 0 0;
+  }
+  .service-card-link .text-link {
+    margin-top: 16px;
+    display: inline-flex;
+    transition: gap .2s;
+    gap: 4px;
+  }
+  .service-card-link:hover .text-link {
+    gap: 8px;
+  }
     display: block;
     width: 48px;
     height: 48px;
@@ -345,7 +382,7 @@ body_class: "page-home"
     <div class="cards-grid">
 
       <!-- Estructuras -->
-      <div class="service-card">
+      <a href="/estructuras.html" class="service-card service-card-link">
         <svg class="card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="5" y="30" width="38" height="3" stroke="rgb(170,0,0)" stroke-width="1.6"/>
           <rect x="11" y="15" width="26" height="15" stroke="rgb(170,0,0)" stroke-width="1.6"/>
@@ -359,15 +396,13 @@ body_class: "page-home"
           <circle cx="37" cy="31" r="1.8" fill="rgb(170,0,0)" opacity=".6"/>
         </svg>
         <h3>Estructuras y<br>Ambientación LED</h3>
-        <p style="color:var(--muted);margin:10px 0 0">
-          Intervención visual de escenarios y montajes con sistemas LED de alta precisión.
-          Tubos, arcos, recorridos y más.
-        </p>
-        <a href="/estructuras.html" class="text-link">Ver línea →</a>
-      </div>
+        <p>Intervención visual de escenarios y montajes con sistemas LED de alta precisión.
+          Tubos, arcos, recorridos y más.</p>
+        <span class="text-link">Ver línea →</span>
+      </a>
 
       <!-- Shows -->
-      <div class="service-card">
+      <a href="/servicios.html#shows" class="service-card service-card-link">
         <svg class="card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="24" cy="24" r="11" stroke="rgb(170,0,0)" stroke-width="1.6"/>
           <circle cx="24" cy="24" r="3.5" fill="rgb(170,0,0)"/>
@@ -381,15 +416,13 @@ body_class: "page-home"
           <line x1="14" y1="34" x2="9"  y2="39" stroke="rgb(170,0,0)" stroke-width="1.6"/>
         </svg>
         <h3>Shows Syncro<br>LED</h3>
-        <p style="color:var(--muted);margin:10px 0 0">
-          Espectáculos coreografiados donde música, movimiento y programación LED
-          trabajan juntos para crear una experiencia escénica real.
-        </p>
-        <a href="/servicios.html#shows" class="text-link">Ver línea →</a>
-      </div>
+        <p>Espectáculos coreografiados donde música, movimiento y programación LED
+          trabajan juntos para crear una experiencia escénica real.</p>
+        <span class="text-link">Ver línea →</span>
+      </a>
 
       <!-- Activaciones -->
-      <div class="service-card">
+      <a href="/servicios.html#activaciones" class="service-card service-card-link">
         <svg class="card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M9 17 L9 31 L20 31 L33 39 L33 9 L20 17 Z"
                 stroke="rgb(170,0,0)" stroke-width="1.6" stroke-linejoin="round"/>
@@ -400,15 +433,13 @@ body_class: "page-home"
           <circle cx="9" cy="24" r="1.8" fill="rgb(170,0,0)" opacity=".7"/>
         </svg>
         <h3>Activaciones y<br>Branding LED</h3>
-        <p style="color:var(--muted);margin:10px 0 0">
-          Elementos LED personalizados para marcas. Presencia visual de alto impacto
-          en activaciones, lanzamientos y eventos corporativos.
-        </p>
-        <a href="/servicios.html#activaciones" class="text-link">Ver línea →</a>
-      </div>
+        <p>Elementos LED personalizados para marcas. Presencia visual de alto impacto
+          en activaciones, lanzamientos y eventos corporativos.</p>
+        <span class="text-link">Ver línea →</span>
+      </a>
 
       <!-- Formatos -->
-      <div class="service-card">
+      <a href="/formatos.html" class="service-card service-card-link">
         <svg class="card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
           <polygon points="24,4 28,18 43,18 31.5,27 35.5,41 24,32 12.5,41 16.5,27 5,18 20,18"
                    stroke="rgb(170,0,0)" stroke-width="1.6" stroke-linejoin="round"/>
@@ -417,12 +448,10 @@ body_class: "page-home"
           <circle cx="24" cy="24" r="2.2" fill="rgb(170,0,0)"/>
         </svg>
         <h3>Formatos<br>Especiales</h3>
-        <p style="color:var(--muted);margin:10px 0 0">
-          Robots LED, trajes, pixel, pois, tambores y más. Recursos visuales únicos
-          para enriquecer cualquier experiencia o show.
-        </p>
-        <a href="/formatos.html" class="text-link">Ver formatos →</a>
-      </div>
+        <p>Robots LED, trajes, pixel, pois, tambores y más. Recursos visuales únicos
+          para enriquecer cualquier experiencia o show.</p>
+        <span class="text-link">Ver formatos →</span>
+      </a>
 
     </div>
   </div>

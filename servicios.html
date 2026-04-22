@@ -187,15 +187,25 @@ body_class: "page-servicios"
   }
   .wa-float svg { width: 26px; height: 26px; fill: #fff; }
 
+  /* ── Stats grid responsive ── */
+  .stats-servicios {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
   /* ── Responsive ── */
   @media (max-width: 860px) {
     .services-big-grid { grid-template-columns: 1fr; }
     .svc-big-card { height: 300px; }
     .diff-grid { grid-template-columns: 1fr; }
+    .stats-servicios { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 600px) {
     .page-hero-wrap .container { padding-top: 110px; padding-bottom: 52px; }
     .svc-big-card { height: 260px; }
+    .stats-servicios { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .stats-servicios .stat strong { font-size: 1.4rem !important; }
   }
 </style>
 
@@ -296,7 +306,7 @@ body_class: "page-servicios"
 ══════════════════════════════════════ -->
 <div class="section-dark" style="padding:52px 0;margin-top:3px">
   <div class="container">
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+<div class="stats-servicios">
       <div class="stat">
         <strong style="font-size:1.9rem;color:var(--accent)">Desde 2014</strong>
         <span>Operando en el mercado</span>

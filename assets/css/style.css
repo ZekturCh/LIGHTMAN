@@ -297,7 +297,50 @@ h3 {
 .faq-list {
   margin-top: 24px;
 }
+/* CONTENEDOR FAQ */
+.faq-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+}
 
+/* ITEMS */
+.faq-item {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 18px 0;
+  cursor: pointer;
+}
+
+/* PREGUNTA */
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  color: #fff;
+  font-size: 1rem;
+}
+
+/* ICONO + */
+.faq-question span {
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+
+/* RESPUESTA */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ACTIVO */
+.faq-item.active .faq-answer {
+  max-height: 200px;
+  margin-top: 10px;
+}
 .feature-list li,
 .bullet-list li {
   margin-bottom: 12px;
@@ -346,17 +389,17 @@ h3 {
   background: rgba(255,255,255,.03);
 }
 
-.faq-list details {
+.-list details {
   border-bottom: 1px solid var(--line);
   padding: 20px 0;
 }
 
-.faq-list summary {
+.-list summary {
   cursor: pointer;
   font-weight: 700;
 }
 
-.faq-list p {
+.-list p {
   color: var(--muted);
   margin: 12px 0 0;
 }

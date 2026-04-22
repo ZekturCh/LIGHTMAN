@@ -1,106 +1,381 @@
 ---
 layout: default
-title: Test Servicios
-description: Test
-canonical: https://lightmanperu.com/servicios.html
-permalink: /servicios.html
-body_class: servicios-page
+title: "Servicios — Lightman Perú"
+description: "Estructuras LED, Shows Syncro, Activaciones y Branding LED, y Trajes LED. Soluciones visuales completas para conciertos, eventos y activaciones de marca."
+canonical: "https://lightmanperu.com/servicios.html"
+body_class: "page-servicios"
 ---
 
-<section class="page-hero">
+<style>
+  /* ── Page hero ── */
+  .page-hero-wrap {
+    position: relative;
+    min-height: 52vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+  .page-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  .page-hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+      rgba(7,7,11,1)   0%,
+      rgba(7,7,11,.55) 55%,
+      rgba(7,7,11,.2)  100%);
+  }
+  .page-hero-wrap .container {
+    position: relative;
+    z-index: 2;
+    padding-top: 140px;
+    padding-bottom: 72px;
+  }
+
+  /* ── Big service cards grid ── */
+  .services-big-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    margin-bottom: 3px;
+  }
+  .svc-big-card {
+    position: relative;
+    height: 420px;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  .svc-big-card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .55s ease, filter .4s;
+    filter: brightness(.55);
+  }
+  .svc-big-card:hover img {
+    transform: scale(1.05);
+    filter: brightness(.8);
+  }
+  .svc-big-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+      rgba(7,7,11,.95) 0%,
+      rgba(7,7,11,.1)  65%);
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+    transition: background .35s;
+  }
+  .svc-big-card:hover .svc-big-overlay {
+    background: linear-gradient(to top,
+      rgba(7,7,11,.98) 0%,
+      rgba(7,7,11,.25) 65%);
+  }
+  .svc-big-content h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 8px;
+    line-height: 1.1;
+  }
+  .svc-big-content h2 span { color: var(--accent); }
+  .svc-big-content p {
+    font-size: .88rem;
+    color: rgba(255,255,255,.55);
+    margin: 0 0 14px;
+    max-width: 320px;
+  }
+  .svc-big-link {
+    font-family: 'Montserrat', sans-serif;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: gap .2s;
+  }
+  .svc-big-card:hover .svc-big-link { gap: 10px; }
+
+  /* ── Differentiators ── */
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 34px;
+  }
+  .diff-card {
+    background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .diff-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--accent);
+    opacity: .5;
+    border-radius: 2px 0 0 2px;
+  }
+  .diff-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: #fff;
+  }
+  .diff-card p {
+    font-size: .88rem;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.65;
+  }
+
+  /* ── CTA band ── */
+  .cta-band {
+    text-align: center;
+    padding: 88px 0;
+    background: linear-gradient(135deg, rgba(170,0,0,.1) 0%, rgba(90,0,0,.06) 100%);
+    border-top: 1px solid rgba(170,0,0,.15);
+    border-bottom: 1px solid rgba(170,0,0,.15);
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-band::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 560px; height: 280px;
+    background: radial-gradient(ellipse, rgba(170,0,0,.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-band h2 { margin: 0 auto 12px; max-width: 20ch; }
+  .cta-band p  { color: var(--muted); margin: 0 auto 28px; }
+
+  /* ── WhatsApp float ── */
+  .wa-float {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    z-index: 999;
+    width: 56px; height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,.35);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .wa-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 28px rgba(37,211,102,.5);
+  }
+  .wa-float svg { width: 26px; height: 26px; fill: #fff; }
+
+  /* ── Responsive ── */
+  @media (max-width: 860px) {
+    .services-big-grid { grid-template-columns: 1fr; }
+    .svc-big-card { height: 300px; }
+    .diff-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .page-hero-wrap .container { padding-top: 110px; padding-bottom: 52px; }
+    .svc-big-card { height: 260px; }
+  }
+</style>
+
+<!-- ══════════════════════════════════════
+     PAGE HERO
+══════════════════════════════════════ -->
+<section class="page-hero-wrap">
+  <div class="page-hero-bg"
+       style="background-image:url('https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=1600&q=85')"></div>
   <div class="container">
-    <p class="eyebrow">Nuestras líneas</p>
-    <h1>TODO LO QUE HACE <span>LIGHTMAN</span></h1>
-    <p class="lead">
-      Una sola tecnología, múltiples aplicaciones según el tipo de evento.
+    <p class="eyebrow">Nuestras Líneas</p>
+    <h1>Todo lo que<br>hace <span>Lightman</span></h1>
+    <p class="lead" style="margin-top:16px">
+      Una sola tecnología base: el LED controlado. Aplicada de formas muy distintas
+      según lo que cada cliente necesita.
     </p>
   </div>
 </section>
 
-<section class="section">
-  <div class="container two-col-service">
-    <div>
-      <img src="{{ '/assets/img/servicio-estructuras.jpg' | relative_url }}">
-    </div>
-    <div>
-      <h2>Estructuras y Ambientación LED</h2>
-      <p>
-        Intervención visual de escenarios y espacios con sistemas LED controlados.
-      </p>
-      <a href="{{ '/estructuras.html' | relative_url }}" class="btn btn-secondary">
-        Ver línea completa
-      </a>
-    </div>
+<!-- ══════════════════════════════════════
+     BIG CARDS GRID
+══════════════════════════════════════ -->
+<section class="section" style="padding-bottom:0">
+  <div class="container">
+    <p class="section-kicker">Elige tu línea</p>
+    <h2 style="max-width:22ch">Elige el camino que<br>encaja con tu proyecto</h2>
+    <p class="section-intro">
+      Un productor de conciertos no entra igual que una marca.
+      Cada línea tiene su propia lógica. Encuentra la tuya.
+    </p>
   </div>
 </section>
 
-<section class="section section-dark" id="shows-syncro">
-  <div class="container two-col-service reverse">
-    <div>
-      <img src="{{ '/assets/img/servicio-shows.jpg' | relative_url }}">
-    </div>
-    <div>
-      <h2>Shows Syncro LED</h2>
-      <p>
-        Espectáculos donde la luz, música y movimiento trabajan juntos.
-      </p>
+<!-- Fila 1 -->
+<div class="services-big-grid" style="margin-top:34px">
 
-      <div class="feature-list compact">
-        <div><strong>Coreografía:</strong> movimiento sincronizado</div>
-        <div><strong>LED:</strong> control en tiempo real</div>
-        <div><strong>Música:</strong> drops y clímax visuales</div>
-        <div><strong>Operación:</strong> precisión en vivo</div>
+  <!-- Estructuras -->
+  <a href="/estructuras.html" class="svc-big-card">
+    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=900&q=80"
+         alt="Estructuras y Ambientación LED" loading="lazy">
+    <div class="svc-big-overlay">
+      <div class="svc-big-content">
+        <h2>Estructuras y<br><span>Ambientación LED</span></h2>
+        <p>Intervención visual de escenarios y espacios con sistemas LED de alta precisión. Para conciertos, montajes y eventos de gran formato.</p>
+        <span class="svc-big-link">Ver línea completa →</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- Shows Syncro -->
+  <a href="/showsyncro.html" class="svc-big-card" id="shows">
+    <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=900&q=80"
+         alt="Shows Syncro LED" loading="lazy">
+    <div class="svc-big-overlay">
+      <div class="svc-big-content">
+        <h2>Shows Syncro<br><span>LED</span></h2>
+        <p>Espectáculos coreografiados donde la luz cuenta una historia. El lado más impactante y diferenciador de Lightman.</p>
+        <span class="svc-big-link">Ver línea completa →</span>
+      </div>
+    </div>
+  </a>
+
+</div>
+
+<!-- Fila 2 -->
+<div class="services-big-grid">
+
+  <!-- Activaciones -->
+  <a href="/activaciones.html" class="svc-big-card" id="activaciones">
+    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=900&q=80"
+         alt="Activaciones y Branding LED" loading="lazy">
+    <div class="svc-big-overlay">
+      <div class="svc-big-content">
+        <h2>Activaciones y<br><span>Branding LED</span></h2>
+        <p>Herramientas LED para marcas y corporativos. Banderas, tambores, hologramas y más, pensados para generar impacto comercial real.</p>
+        <span class="svc-big-link">Ver línea completa →</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- Trajes -->
+  <a href="/trajes.html" class="svc-big-card">
+    <img src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=900&q=80"
+         alt="Trajes disponibles" loading="lazy">
+    <div class="svc-big-overlay">
+      <div class="svc-big-content">
+        <h2>Trajes<br><span>disponibles</span></h2>
+        <p>Robots LED gigantes, trajes sincronizados, pixel, pois y más. Recursos únicos que enriquecen cualquier show o experiencia visual.</p>
+        <span class="svc-big-link">Ver trajes →</span>
+      </div>
+    </div>
+  </a>
+
+</div>
+
+<!-- ══════════════════════════════════════
+     STATS
+══════════════════════════════════════ -->
+<div class="section-dark" style="padding:52px 0;margin-top:3px">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+      <div class="stat">
+        <strong style="font-size:1.9rem;color:var(--accent)">Desde 2014</strong>
+        <span>Operando en el mercado</span>
+      </div>
+      <div class="stat">
+        <strong style="font-size:1.9rem;color:var(--accent)">+1000</strong>
+        <span>Eventos realizados</span>
+      </div>
+      <div class="stat">
+        <strong style="font-size:1.9rem;color:var(--accent)">Propia</strong>
+        <span>Manufactura en Perú</span>
+      </div>
+      <div class="stat">
+        <strong style="font-size:1.9rem;color:var(--accent)">Intl.</strong>
+        <span>Cobertura nacional e internacional</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     LO QUE NOS DIFERENCIA
+══════════════════════════════════════ -->
+<section class="section section-soft">
+  <div class="container">
+    <p class="section-kicker">Lo que nos diferencia</p>
+    <h2 style="max-width:22ch">La diferencia está<br>en el <span style="color:var(--accent)">control</span></h2>
+    <p class="section-intro">
+      No somos alquiladores, no somos una productora genérica.
+      Somos especialistas en LED con manufactura propia y operación integral.
+    </p>
+    <div class="diff-grid">
+      <div class="diff-card">
+        <h3>No somos alquiladores</h3>
+        <p>Diseñamos, programamos y operamos. El servicio incluye siempre nuestro equipo técnico presente en el evento. Los equipos nunca van solos.</p>
+      </div>
+      <div class="diff-card">
+        <h3>No somos una productora genérica</h3>
+        <p>Somos especialistas en LED. Eso nos da un nivel de dominio técnico y visual que no tiene quien hace de todo.</p>
+      </div>
+      <div class="diff-card">
+        <h3>Manufactura propia en Perú</h3>
+        <p>Fabricamos nuestros propios artefactos LED, lo que nos permite personalizar sin límites y responder rápido ante cualquier requerimiento.</p>
+      </div>
+      <div class="diff-card">
+        <h3>Control LED integral</h3>
+        <p>Manejamos la programación punto a punto de cada elemento del show. Eso significa precisión real, timing exacto y cohesión visual completa.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="activaciones">
-  <div class="container two-col-service">
-    <div>
-      <img src="{{ '/assets/img/servicio-activaciones.jpg' | relative_url }}">
-    </div>
-    <div>
-      <h2>Activaciones y Branding LED</h2>
-      <p>
-        Soluciones visuales para atraer atención y reforzar marca.
-      </p>
-
-      <ul class="bullet-list">
-        <li>Banderas LED</li>
-        <li>Tambores LED</li>
-        <li>Elementos visuales de impacto</li>
-        <li>Personalización por marca</li>
-      </ul>
-    </div>
+<!-- ══════════════════════════════════════
+     CTA FINAL
+══════════════════════════════════════ -->
+<div class="cta-band">
+  <div class="container" style="position:relative;z-index:1">
+    <h2>¿No sabes qué línea necesitas?</h2>
+    <p>Cuéntanos tu evento y te orientamos hacia la solución ideal.</p>
+    <a href="https://wa.me/51964111591" class="btn btn-primary"
+       target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a>
   </div>
-</section>
+</div>
 
-<section class="section section-soft">
-  <div class="container">
-    <p class="section-kicker">Diferencial</p>
-    <h2>La diferencia está en el control</h2>
-
-    <div class="cards-grid">
-      <article class="service-card">
-        <h3>No somos alquiladores</h3>
-        <p>Servicio completo con equipo técnico.</p>
-      </article>
-
-      <article class="service-card">
-        <h3>Especialistas en LED</h3>
-        <p>Dominio técnico y visual real.</p>
-      </article>
-
-      <article class="service-card">
-        <h3>Manufactura propia</h3>
-        <p>Producción en Perú.</p>
-      </article>
-
-      <article class="service-card">
-        <h3>Control total</h3>
-        <p>Timing y cohesión visual.</p>
-      </article>
-    </div>
-  </div>
-</section>
+<!-- WhatsApp flotante -->
+<a class="wa-float" href="https://wa.me/51964111591"
+   target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94
+    1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059
+    -.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371
+    -.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01
+    -.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198
+    2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719
+    2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87
+    0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45
+    4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45
+    -4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0
+    2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0
+    11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>

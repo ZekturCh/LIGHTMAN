@@ -21,19 +21,23 @@
   <meta name="twitter:title" content="{{ page.title }}">
   <meta name="twitter:description" content="{{ page.description }}">
   <meta name="twitter:image" content="{{ '/assets/img/og-lightman.jpg' | absolute_url }}">
+<!-- Favicon principal -->
+<link rel="icon" type="image/png" sizes="64x64" href="{{ '/assets/img/favicon.png' | relative_url }}">
 
-  <!-- Favicon principal (Google lo prioriza) -->
-<link rel="icon" href="/favicon.ico" sizes="any">
+<!-- Tamaño estándar -->
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/favicon-32.png' | relative_url }}">
 
-<!-- PNGs adicionales (mejor compatibilidad) -->
-<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/favicon.png' | relative_url }}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/img/favicon.png' | relative_url }}">
+<!-- Fallback (por si acaso) -->
+<link rel="icon" href="{{ '/assets/img/favicon.png' | relative_url }}">
 
-<!-- Para iPhone / iOS -->
+<!-- iOS -->
 <link rel="apple-touch-icon" href="{{ '/assets/img/favicon.png' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 
+<!-- Color del navegador (opcional pro) -->
+<meta name="theme-color" content="#050507">
+
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",

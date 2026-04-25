@@ -593,31 +593,34 @@ body_class: "page-home"
     </p>
 
     <div class="portfolio-preview">
-      <div class="pf-item">
-        <img src="{{ '/assets/img/syncro2.webp' | relative_url }}"
-             alt="Show Syncro — Concierto Nacional" class="expandable-img" loading="lazy">
-        <div class="pf-overlay">
-          <div><h4>Show Syncro</h4><span>Concierto Nacional</span></div>
-        </div>
-      </div>
-      <div class="pf-item">
-        <img src="{{ '/assets/img/acti2.webp' | relative_url }}"
-             alt="Activación Corporativa" class="expandable-img" loading="lazy">
-        <div class="pf-overlay">
-          <div><h4>Activación Corporativa</h4><span>Lanzamiento de Marca</span></div>
-        </div>
-      </div>
-      <div class="pf-item">
+      <div class="pf-item gallery-card" data-gallery="shows-syncro" data-index="0">
+                <img src="/assets/img/syncro2.webp" alt="Show Syncro - Concierto Nacional" loading="lazy">
+              
+                <div class="pf-overlay">
+                  <div>
+                    <h4>Show Syncro</h4>
+                    <span>ExpoDeco - Wham/HardTechno Tron</span>
+                  </div>
+                </div>
+          </div>
+      <div class="pf-item gallery-card" data-gallery="bandera-led" data-index="0">
+            <img src="{{ '/assets/img/acti2.webp' | relative_url }}"
+                 alt="Activación Corporativa"  loading="lazy">
+            <div class="pf-overlay">
+              <div><h4>Activación Corporativa</h4><span>Lanzamiento de Marca</span></div>
+            </div>
+          </div>
+      <div class="pf-item gallery-card" data-gallery="estructuras" data-index="0">
         <img src="{{ '/assets/img/scn2.webp' | relative_url }}"
-             alt="Estructura LED — Festival" class="expandable-img" loading="lazy">
+             alt="Estructura LED — Festival"  loading="lazy">
         <div class="pf-overlay">
-          <div><h4>Estructura LED</h4><span>Festival Internacional</span></div>
+          <div><h4>Estructura LED</h4><span>Concierto Aniversario Comas</span></div>
         </div>
       </div>
     </div>
 
     <div class="section-actions" style="margin-top:28px">
-      <a href="/proyectos.html" class="btn btn-secondary">Ver portafolio completo</a>
+      <a href="/galeria.html" class="btn btn-secondary">Ver portafolio completo</a>
     </div>
   </div>
 </section>

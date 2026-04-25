@@ -62,10 +62,23 @@
   </main>
 
   {% include footer.html %}
-  <div class="image-modal" id="imageModal">
-  <button class="image-modal-close" id="imageModalClose">×</button>
-  <img id="imageModalImg" src="" alt="">
+  <div class="global-gallery" id="globalGallery" aria-hidden="true">
+  <button class="gallery-close" type="button" aria-label="Cerrar galería">×</button>
+
+  <button class="gallery-arrow gallery-prev" type="button" aria-label="Imagen anterior">‹</button>
+
+  <div class="gallery-box">
+    <img id="galleryImage" src="" alt="">
+    <div class="gallery-caption">
+      <h3 id="galleryTitle"></h3>
+      <p id="galleryText"></p>
+    </div>
+  </div>
+
+  <button class="gallery-arrow gallery-next" type="button" aria-label="Imagen siguiente">›</button>
 </div>
+
+<script src="{{ '/assets/js/gallery.js' | relative_url }}"></script>
   <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>

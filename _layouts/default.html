@@ -62,7 +62,10 @@
   </main>
 
   {% include footer.html %}
-
+  <div class="image-modal" id="imageModal">
+  <button class="image-modal-close" id="imageModalClose">×</button>
+  <img id="imageModalImg" src="" alt="">
+</div>
   <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>

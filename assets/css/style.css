@@ -475,6 +475,10 @@ textarea {
   align-items: start;
 }
 
+.footer-links{
+    display: grid;
+  }
+
 .footer-logo {
   width: 220px;
   height: auto;

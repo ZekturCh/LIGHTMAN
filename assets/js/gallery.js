@@ -164,10 +164,25 @@ const galleries = {
                   {
                     src: "assets/img/galerias/bandera/bandera-00.webp",
                     title: "Bandera LED",
-                    text: "Elemento visual para shows."
+                    text: "Noche Crema, banderas control sincronizado"
                   },
                   {
                     src: "assets/img/galerias/bandera/bandera-01.webp",
+                    title: "13 Banderas LED",
+                    text: "Elemento visual para show visual Perú Mucho Gusto"
+                  },
+                  {
+                    src: "assets/img/galerias/bandera/bandera-02.webp",
+                    title: "Bandera Syncro LED",
+                    text: "Visual de texto para activación"
+                  },
+                  {
+                    src: "assets/img/galerias/bandera/bandera-03.webp",
+                    title: "Clásica Bandera LED",
+                    text: "Bandera personalizada Primax para lanzamiento"
+                  },
+                  {
+                    src: "assets/img/galerias/bandera/bandera-04.webp",
                     title: "Bandera en acción",
                     text: "Movimiento escénico."
                   }

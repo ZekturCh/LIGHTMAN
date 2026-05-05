@@ -47,17 +47,17 @@ const galleries = {
                   text: "Traje moderno para shows urbanos y activaciones."
                 },
                 {
-                  src: "assets/img/galerias/urban/urban-01.webp",
+                  src: "assets/img/ubns.webp",
                   title: "Urban Jackson",
                   text: "Show inspirado en performance pop."
                 },
                 {
-                  src: "assets/img/galerias/urban/urban-02.webp",
+                  src: "assets/img/tmbsy.webp",
                   title: "Urban Electro",
                   text: "Versión electrónica para escenarios."
                 },
                 {
-                  src: "assets/img/galerias/urban/urban-03.webp",
+                  src: "assets/img/rdrsy.webp",
                   title: "Urban Riders",
                   text: "Casco LED estilo moto."
                 }

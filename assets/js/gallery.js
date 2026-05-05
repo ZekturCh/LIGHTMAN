@@ -29,6 +29,11 @@ const galleries = {
                     text: "Aplicación en escenario y coreografías."
                   },
                   {
+                    src: "assets/img/galerias/andino/andino-03.webp",
+                    title: "Presentación APEC 2025",
+                    text: "Show Syncro de Tijeras LED."
+                  }, 
+                  {
                     src: "assets/img/galerias/andino/andino-02.webp",
                     title: "Andino Diablada",
                     text: "Variación con máscara para shows temáticos."

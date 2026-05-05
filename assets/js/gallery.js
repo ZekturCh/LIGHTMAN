@@ -253,7 +253,7 @@ const galleries = {
                       text: "Show electrónico."
                     },
                     {
-                      src: "assets/img/syncro-02.webp",
+                      src: "assets/img/syncro2.webp",
                       title: "TRON 80s",
                       text: "Show retro."
                     },

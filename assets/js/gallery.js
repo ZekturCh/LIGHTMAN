@@ -270,7 +270,7 @@ const galleries = {
 
   "estructuras": [
                     {
-                      src: "assets/img/galerias/estructuras/estructura-00.webp",
+                      src: "assets/img/hero1.webp",
                       title: "Grupo 5",
                       text: "Escenario completo."
                     },
@@ -280,14 +280,14 @@ const galleries = {
                       text: "Montaje elegante."
                     },
                     {
-                      src: "assets/img/galerias/estructuras/estructura-02.webp",
+                      src: "assets/img/scn5.webp",
                       title: "Tubos 360",
                       text: "Iluminación envolvente."
                     },
                     {
-                      src: "assets/img/galerias/estructuras/estructura-03.webp",
-                      title: "Delineado LED",
-                      text: "Contorno visual."
+                      src: "assets/img/galerias/estructuras/estructura-02.webp",
+                      title: "Delineado LED Concierto Yaritza SJL",
+                      text: "Contorno visual para pantallas"
                     },
                     {
                       src: "assets/img/galerias/estructuras/estructura-04.webp",

@@ -238,34 +238,29 @@ const galleries = {
 
   "shows-syncro": [
                     {
-                      src: "assets/img/galerias/syncro/syncro-00.webp",
+                      src: "assets/img/galerias/andino/andino-03.webp",
                       title: "Andino Tijeras",
                       text: "Show syncro andino."
                     },
                     {
-                      src: "assets/img/galerias/syncro/syncro-01.webp",
+                      src: "assets/img/ubns.webp",
                       title: "Urban Jackson",
                       text: "Performance pop."
                     },
                     {
-                      src: "assets/img/galerias/syncro/syncro-02.webp",
+                      src: "assets/img/galerias/urban/urban-00.webp",
                       title: "Urban Electro",
                       text: "Show electrónico."
                     },
                     {
-                      src: "assets/img/galerias/syncro/syncro-03.webp",
+                      src: "assets/img/syncro-02.webp",
                       title: "TRON 80s",
                       text: "Show retro."
                     },
                     {
                       src: "assets/img/galerias/syncro/syncro-04.webp",
-                      title: "Stickman Act Fight",
+                      title: "Starwars Act Fight",
                       text: "Show teatral."
-                    },
-                    {
-                      src: "assets/img/galerias/syncro/syncro-05.webp",
-                      title: "Pixel Mirror Brand",
-                      text: "Show publicitario."
                     }
                   ],
 

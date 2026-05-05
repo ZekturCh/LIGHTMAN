@@ -70,7 +70,7 @@ const galleries = {
                   text: "Traje LED deportivo y escénico."
                 },
                 {
-                  src: "assets/img/galerias/tron/tron-01.webp",
+                  src: "assets/img/syncro2.webp",
                   title: "TRON show",
                   text: "Aplicación en coreografías."
                 },

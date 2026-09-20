@@ -1,17 +1,100 @@
 const galleries = {
+  "trajes-catalogo": [
+                    {
+                      src: "assets/img/trajes/robot-led-lightman.webp",
+                      title: "Robot LED Lightman",
+                      text: "Personaje principal para shows, ingresos y activaciones."
+                    },
+                    {
+                      src: "assets/img/trajes/robot-led-piso.webp",
+                      title: "Robot LED Piso",
+                      text: "Formato cercano al público para fotos y recepción."
+                    },
+                    {
+                      src: "assets/img/trajes/pixel-led.webp",
+                      title: "Pixel LED",
+                      text: "Traje tipo matriz para shows sincronizados."
+                    },
+                    {
+                      src: "assets/img/trajes/urban-led.webp",
+                      title: "Urban LED",
+                      text: "Traje moderno para coreografías y activaciones."
+                    },
+                    {
+                      src: "assets/img/trajes/tron-led.webp",
+                      title: "Tron LED",
+                      text: "Líneas luminosas para escenas tecnológicas."
+                    },
+                    {
+                      src: "assets/img/trajes/stickman-led.webp",
+                      title: "Stickman LED",
+                      text: "Silueta luminosa para rutinas grupales."
+                    },
+                    {
+                      src: "assets/img/trajes/danzante-tijera-led.webp",
+                      title: "Danzante de Tijera LED",
+                      text: "Tradición andina reinterpretada con tecnología LED."
+                    },
+                    {
+                      src: "assets/img/trajes/diablo-urban.webp",
+                      title: "Diablo Urban",
+                      text: "Figura de alto impacto para shows temáticos."
+                    },
+                    {
+                      src: "assets/img/trajes/diablo-poi.webp",
+                      title: "Diablo Poi",
+                      text: "Performance con movimiento, ritmo y luz."
+                    },
+                    {
+                      src: "assets/img/trajes/galactica-led.webp",
+                      title: "Galáctica LED",
+                      text: "Personaje de estética espacial para entradas y performance."
+                    },
+                    {
+                      src: "assets/img/trajes/hada-futurista.webp",
+                      title: "Hada Futurista",
+                      text: "Formato elegante para recepción y activaciones premium."
+                    },
+                    {
+                      src: "assets/img/trajes/hula-futurista.webp",
+                      title: "Hula Futurista",
+                      text: "Movimiento circular y efectos de luz."
+                    },
+                    {
+                      src: "assets/img/trajes/marote-led.webp",
+                      title: "Marote LED",
+                      text: "Personaje móvil para ingresos y recorridos."
+                    },
+                    {
+                      src: "assets/img/trajes/calavera-led.webp",
+                      title: "Calavera LED",
+                      text: "Visual intenso para eventos temáticos."
+                    },
+                    {
+                      src: "assets/img/trajes/alas-led.webp",
+                      title: "Alas LED",
+                      text: "Recurso visual para fotos, entradas y reveals."
+                    },
+                    {
+                      src: "assets/img/trajes/alas-led-gigantes.webp",
+                      title: "Alas LED Gigantes",
+                      text: "Mayor escala para escenarios y composiciones fotográficas."
+                    }
+                  ],
+
   "robot-lightman": [
                     {
-                      src: "assets/img/galerias/robot-lightman/robot-00.webp",
+                      src: "assets/img/trajes/robot-led-lightman.webp",
                       title: "Robot LED Gigante",
                       text: "Producto estrella de Lightman para shows y conciertos."
                     },
                     {
-                      src: "assets/img/galerias/robot-lightman/robot-01.webp",
+                      src: "assets/img/trajes/robot-led-piso.webp",
                       title: "Robot LED en concierto",
                       text: "Presencia escénica de alto impacto."
                     },
                     {
-                      src: "assets/img/galerias/robot-lightman/robot-02.webp",
+                      src: "assets/img/trajes/alas-led-gigantes.webp",
                       title: "Robot LED recepción",
                       text: "Ideal para bienvenida y activaciones."
                     }
@@ -64,36 +147,36 @@ const galleries = {
               ],
 
   "tron-led": [
-                {
-                  src: "assets/img/galerias/tron/tron-00.webp",
-                  title: "Traje TRON",
-                  text: "Traje LED deportivo y escénico."
-                },
+                  {
+                    src: "assets/img/trajes/tron-led.webp",
+                    title: "Traje TRON",
+                    text: "Traje LED deportivo y escénico."
+                  },
                 {
                   src: "assets/img/syncro2.webp",
                   title: "TRON show",
                   text: "Aplicación en coreografías."
                 },
-                {
-                  src: "assets/img/galerias/tron/tron-02.webp",
-                  title: "TRON láser",
-                  text: "Versión con efectos láser."
-                }
+                  {
+                    src: "assets/img/galerias/tron/urban-02.webp",
+                    title: "TRON láser",
+                    text: "Versión con efectos láser."
+                  }
               ],
 
   "stickman-led": [
                     {
-                      src: "assets/img/galerias/stickman/stickman-00.webp",
+                      src: "assets/img/trajes/stickman-led.webp",
                       title: "Stickman LED",
                       text: "Personaje LED para shows y activaciones."
                     },
                     {
-                      src: "assets/img/galerias/stickman/stickman-01.webp",
+                      src: "assets/img/trajes/alas-led.webp",
                       title: "Stickman grupal",
                       text: "Ingreso múltiple para fiestas."
                     },
                     {
-                      src: "assets/img/galerias/stickman/stickman-02.webp",
+                      src: "assets/img/trajes/calavera-led.webp",
                       title: "Stickman combate",
                       text: "Show teatral syncro."
                     }
@@ -101,12 +184,12 @@ const galleries = {
 
   "marote-led": [
                   {
-                    src: "assets/img/galerias/marote/marote-00.webp",
+                    src: "assets/img/trajes/marote-led.webp",
                     title: "Marote LED",
                     text: "Personaje para pasacalle y hora loca."
                   },
                   {
-                    src: "assets/img/galerias/marote/marote-01.webp",
+                    src: "assets/img/trajes/urban-led.webp",
                     title: "Marote recepción",
                     text: "Activación con público."
                   }
@@ -114,12 +197,12 @@ const galleries = {
 
   "hada-led": [
                 {
-                  src: "assets/img/galerias/hada/hada-00.webp",
+                  src: "assets/img/trajes/hada-futurista.webp",
                   title: "Hada LED",
                   text: "Personaje visual para recepción."
                 },
                 {
-                  src: "assets/img/galerias/hada/hada-01.webp",
+                  src: "assets/img/trajes/hula-futurista.webp",
                   title: "Hada evento",
                   text: "Ideal para hora loca."
                 }
@@ -127,12 +210,12 @@ const galleries = {
 
   "galactica-led": [
                     {
-                      src: "assets/img/galerias/galactica/galactica-00.webp",
+                      src: "assets/img/trajes/galactica-led.webp",
                       title: "Traje Galáctica",
                       text: "Traje LED para malabaristas."
                     },
                     {
-                      src: "assets/img/galerias/galactica/galactica-01.webp",
+                      src: "assets/img/trajes/diablo-poi.webp",
                       title: "Galáctica poi",
                       text: "Aplicación con malabares LED."
                     }
@@ -140,22 +223,22 @@ const galleries = {
 
   "robot-pixel": [
                   {
-                    src: "assets/img/galerias/robot-pixel/robot-pixel-00.webp",
+                    src: "assets/img/trajes/pixel-led.webp",
                     title: "Robot Pixel",
                     text: "Traje tipo pantalla LED."
                   },
                   {
-                    src: "assets/img/galerias/robot-pixel/robot-pixel-01.webp",
+                    src: "assets/img/trajes/robot-led-lightman.webp",
                     title: "Robot Pixel show",
                     text: "Uso escénico."
                   },
                   {
-                    src: "assets/img/galerias/robot-pixel/robot-pixel-02.webp",
+                    src: "assets/img/trajes/robot-led-piso.webp",
                     title: "Robot Pixel activación",
                     text: "Publicidad y eventos."
                   },
                   {
-                    src: "assets/img/galerias/robot-pixel/robot-pixel-03.webp",
+                    src: "assets/img/trajes/alas-led-gigantes.webp",
                     title: "Robot Pixel zancos",
                     text: "Versión elevada."
                   }
@@ -195,12 +278,12 @@ const galleries = {
 
   "poi-led": [
               {
-                src: "assets/img/galerias/poi/poi-00.webp",
+                src: "assets/img/trajes/diablo-poi.webp",
                 title: "Poi LED",
                 text: "Malabar visual."
               },
               {
-                src: "assets/img/galerias/poi/poi-01.webp",
+                src: "assets/img/trajes/hula-futurista.webp",
                 title: "Poi coreografía",
                 text: "Sincronizado con música."
               }
@@ -208,12 +291,12 @@ const galleries = {
 
   "tambor-led": [
                   {
-                    src: "assets/img/galerias/tambor/tambor-00.webp",
+                    src: "assets/img/Bled.webp",
                     title: "Tambor LED",
                     text: "Elemento musical visual."
                   },
                   {
-                    src: "assets/img/galerias/tambor/tambor-01.webp",
+                    src: "assets/img/Fled.webp",
                     title: "Tambor en batucada",
                     text: "Show en vivo."
                   }
@@ -221,12 +304,12 @@ const galleries = {
 
   "holograma-led": [
                     {
-                      src: "assets/img/galerias/holograma/holo-00.webp",
+                      src: "assets/img/holo.webp",
                       title: "Holograma LED",
                       text: "Visual flotante."
                     },
                     {
-                      src: "assets/img/galerias/holograma/holo-01.webp",
+                      src: "assets/img/hser.webp",
                       title: "Holograma escena",
                       text: "Doble visual."
                     }
@@ -290,12 +373,12 @@ const galleries = {
                       text: "Contorno visual para pantallas"
                     },
                     {
-                      src: "assets/img/galerias/estructuras/estructura-04.webp",
+                      src: "assets/img/scn4.webp",
                       title: "Delineado Flex",
                       text: "Flexibilidad visual."
                     },
                     {
-                      src: "assets/img/galerias/estructuras/estructura-05.webp",
+                      src: "assets/img/tubos360.webp",
                       title: "Malla LED",
                       text: "Pantalla tipo bandera."
                     }
